@@ -4,4 +4,4 @@ def get_meals(ingr_list, db):
 
 
 if __name__ == "main":
-    pass
+    print('whats up')
