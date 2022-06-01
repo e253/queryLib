@@ -4,7 +4,7 @@ from decouple import config
 
 def connect_to_mongo():
     '''Attempts to establish connect to mongo in EC2 
-    throws ConnectException if something goes wrong
+    throws ConnectError if something goes wrong
 
     return: mongo client
     rtype: MongoClient '''
