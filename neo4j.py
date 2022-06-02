@@ -7,7 +7,7 @@ def connect_to_neo():
     return: Graph Object 
     rtype: py2neo.database.Graph '''
     try: 
-        return Graph("bolt://{}:7687".fornat(config('IP')), auth = (config('NEO_USERNAME'), config("NEO_PASSWORD")))
+        return Graph("bolt://{}:7687".format(config('IP')), auth = (config('NEO_USERNAME'), config("NEO_PASSWORD")))
     except:
         print('Connection to Neo4j failed, check connection information and try again')
 
