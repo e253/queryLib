@@ -15,16 +15,16 @@ def get_meals(ingr_list, db='MongoDB'):
     '''
     if db.lower().strip() == 'mongodb':
         print('Processing Query with MongoDB!')
-        return _mongo_get_meals(ingr_list)
+        return _mongo_get_meals(ingr_list[0], ingr_list[1])
     if db.lower().strip() == 'neo4j':
         print('Processing Query with Neo4j!')
-        return _neo4j_get_meals(ingr_list)
+        return list(set([i['ee.name'] for i in _neo4j_get_meals(ingr_list[0], ingr_list[1])]))
     else:
         return '{} is an invalid input database. Try...\n- MongoDB\n- Neo4j'.format(db)
 
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     print('Welcome to LB food queryLib')
-    ingr_list = input('Enter ingredients comma separated without spaces')
-    print(get_meals(ingr_list.split(',')))
+    ingr_list = input('Enter two ingredients comma separated without spaces\n')
+    print(get_meals(ingr_list.split(','), 'neo4j'))
