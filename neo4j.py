@@ -12,4 +12,4 @@ def connect_to_neo():
         print('Connection to Neo4j failed, check connection information and try again')
 
 def _neo4j_get_meals(ingr_list):
-    client = connect_to_neo()
+    graph = connect_to_neo()
