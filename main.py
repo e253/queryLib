@@ -1,6 +1,5 @@
 from mongo import _mongo_get_meals 
 from neo4j import _neo4j_get_meals 
-from sql import _sql_get_meals 
 
 
 def get_meals(ingr_list, db='MongoDB'):
@@ -10,22 +9,18 @@ def get_meals(ingr_list, db='MongoDB'):
     db: Default 'MongoDB'
         Options:
             - mongodb
-            - sql
             - neo4j
     return: list of recipe's contained the given ingredient list
     rType: list
     '''
-    if db.lower() == 'mongodb':
+    if db.lower().strip() == 'mongodb':
         print('Processing Query with MongoDB!')
         return _mongo_get_meals(ingr_list)
-    if db.lower() == 'sql':
-        print('Processing Query with SQL!')
-        return _sql_get_meals(ingr_list)
-    if db.lower() == 'neo4j':
+    if db.lower().strip() == 'neo4j':
         print('Processing Query with Neo4j!')
         return _neo4j_get_meals(ingr_list)
     else:
-        return '{} is an invalid input database. Try...\n- MongoDB\n- SQL\n- Neo4j'.format(db)
+        return '{} is an invalid input database. Try...\n- MongoDB\n- Neo4j'.format(db)
 
 
 
